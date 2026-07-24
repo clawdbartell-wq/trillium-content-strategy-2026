@@ -76,7 +76,9 @@
                         <div class="font-semibold text-lg">Post Performance by Channel</div>
                         <div class="text-xs px-3 py-1 bg-zinc-100 rounded-2xl text-zinc-500">4 weeks • 32 posts</div>
                     </div>
-                    <canvas id="channelChart" class="h-72"></canvas>
+                    <div class="relative h-44 sm:h-48">
+                        <canvas id="channelChart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -297,7 +299,8 @@
                     data: [12, 6, 6, 5, 2],
                     backgroundColor: ['#0a2540', '#e36b5c', '#d4af7b', '#64748b', '#334155'],
                     borderRadius: 6,
-                    barThickness: 42,
+                    barThickness: 28,
+                    maxBarThickness: 32,
                 }]
             },
             options: {
