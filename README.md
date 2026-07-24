@@ -17,3 +17,5 @@ Professional content strategy dashboard powered by real data from the Trilly Co 
 **Built for:** Keenan Conrad sync (Sunday night) — positions us as strategic, not just posting, and gives Keenan clear options without forcing a decision today.
 
 **Built by:** Clawd (with data from the content calendar + AEO research)
+
+<!-- last verified: 2026-07-24 20:02:29 UTC (triggering legacy Pages rebuild) -->
