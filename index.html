@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trillium × Trilly Co • Content Strategy Dashboard • July 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        :root { --navy: #0a2540; --coral: #e36b5c; --gold: #d4af7b; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%); }
+        .card { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        .live-dot { animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800">
+    <div class="max-w-7xl mx-auto">
+        <!-- HERO -->
+        <div class="hero-bg text-white py-16 px-8 rounded-b-3xl">
+            <div class="flex items-center gap-x-3 mb-6">
+                <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl border border-white/20">⬡</div>
+                <div>
+                    <div class="text-sm tracking-[2px] text-white/70 font-medium">TRILLIUM HIRING × TRILLY CO</div>
+                    <div class="text-4xl heading-font font-semibold tracking-tighter">Content Strategy Dashboard</div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-end gap-y-6 justify-between">
+                <div>
+                    <div class="inline-flex items-center gap-x-2 bg-white/10 text-white text-sm px-4 py-1.5 rounded-3xl mb-4">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full live-dot"></div>
+                        <span class="font-medium">JUNE 29 – JULY 24 2026 • 4-WEEK PULSE</span>
+                    </div>
+                    <h1 class="text-6xl heading-font font-semibold tracking-tighter leading-none mb-3">Where We Are.<br>What's Missing.<br>Where We Go Next.</h1>
+                    <p class="text-xl text-white/80 max-w-lg">A professional briefing for Keenan, Rachel, and the team. Real data. Honest gaps. Prioritized recommendations for small-business expansion through better HR content.</p>
+                    <div class="mt-8 flex items-center gap-x-8 text-sm">
+                        <div>
+                            <div class="text-white/60 text-xs tracking-widest">GENERATED</div>
+                            <div class="font-mono text-lg">2026-07-24 11:55 ET</div>
+                        </div>
+                        <div>
+                            <div class="text-white/60 text-xs tracking-widest">FOR</div>
+                            <div class="font-medium">Keenan Conrad Sync • Sunday Night</div>
+                        </div>
+                        <div class="h-9 w-px bg-white/20"></div>
+                        <a href="https://github.com/clawdbartell-wq/trillium-content-strategy-2026" target="_blank" class="inline-flex items-center gap-x-2 bg-white text-[#0a2540] px-6 py-3 rounded-2xl font-medium hover:bg-amber-100 transition-colors">
+                            <span>View on GitHub</span>
+                            <span class="text-xs opacity-70">↗</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 max-w-xs">
+                    <div class="text-xs uppercase tracking-widest text-white/60 mb-4">4-WEEK SUMMARY</div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div><div class="text-5xl font-semibold text-white heading-font">32</div><div class="text-white/70 text-sm">Posts shipped</div></div>
+                        <div><div class="text-5xl font-semibold text-white heading-font">13</div><div class="text-white/70 text-sm">Live posts</div></div>
+                        <div><div class="text-5xl font-semibold text-white heading-font">5</div><div class="text-white/70 text-sm">Channels</div></div>
+                        <div><div class="text-5xl font-semibold text-emerald-400 heading-font">4</div><div class="text-white/70 text-sm">Pillars covered</div></div>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-white/20 text-xs text-white/60">
+                        P4 (Startup People-Ops) = <span class="text-rose-300">0 posts</span><br>
+                        R1 & R4 = <span class="text-rose-300">0 posts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-8 grid grid-cols-12 gap-6">
+            <!-- METRICS -->
+            <div class="col-span-12 lg:col-span-8">
+                <div class="bg-white rounded-3xl shadow-sm border border-zinc-100 p-8 card">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="font-semibold text-lg">Post Performance by Channel</div>
+                        <div class="text-xs px-3 py-1 bg-zinc-100 rounded-2xl text-zinc-500">4 weeks • 32 posts</div>
+                    </div>
+                    <canvas id="channelChart" class="h-72"></canvas>
+                </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-4 space-y-6">
+                <!-- PILLAR COVERAGE -->
+                <div class="bg-white rounded-3xl shadow-sm border border-zinc-100 p-8 card h-full">
+                    <div class="font-semibold mb-6">Pillar Coverage</div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span class="font-medium">P3 — HR Systems & Compliance</span><span class="font-mono text-emerald-600">17</span></div>
+                            <div class="h-2 bg-zinc-100 rounded-full overflow-hidden"><div class="h-2 bg-emerald-500 rounded-full w-[65%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span class="font-medium">P1 — Fractional HR</span><span class="font-mono text-emerald-600">11</span></div>
+                            <div class="h-2 bg-zinc-100 rounded-full overflow-hidden"><div class="h-2 bg-emerald-500 rounded-full w-[42%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span class="font-medium text-amber-600">P5 — Studio / Seattle Local</span><span class="font-mono text-amber-600">2</span></div>
+                            <div class="h-2 bg-zinc-100 rounded-full overflow-hidden"><div class="h-2 bg-amber-500 rounded-full w-[8%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2"><span class="font-medium text-rose-500">P4 — Startup People-Ops</span><span class="font-mono text-rose-500">0</span></div>
+                            <div class="h-2 bg-zinc-100 rounded-full overflow-hidden"><div class="h-2 bg-rose-400 rounded-full w-0"></div></div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t text-xs text-rose-500 font-medium">★ Major gap in P4 — highest-leverage opportunity for small business expansion content</div>
+                </div>
+
+                <!-- RESOURCE COVERAGE -->
+                <div class="bg-white rounded-3xl shadow-sm border border-zinc-100 p-8 card">
+                    <div class="font-semibold mb-4">Resource Library Coverage (R1–R11)</div>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-2xl">R7 Compliance — 8 posts</div>
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-2xl">R8 Onboarding — 7 posts</div>
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-2xl">R5 Cost & ROI — 5 posts</div>
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-2xl">R6 When to Hire — 4 posts</div>
+                        <div class="bg-amber-50 text-amber-700 px-4 py-3 rounded-2xl">R9 What HR Covers — 2 posts</div>
+                        <div class="bg-zinc-100 px-4 py-3 rounded-2xl text-zinc-400">R1, R4 — 0 posts</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIVE POSTS -->
+            <div class="col-span-12">
+                <div class="bg-white rounded-3xl shadow-sm border border-zinc-100 p-8 card">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="font-semibold">13 Live Posts (as of July 24)</div>
+                        <a href="https://github.com/clawdbartell-wq/trillium-content-strategy-2026" target="_blank" class="text-xs text-blue-600 hover:underline">Full list in repo →</a>
+                    </div>
+                    <div class="text-xs font-mono text-zinc-400 mb-3 grid grid-cols-12">
+                        <div class="col-span-2">DATE</div><div class="col-span-2">CHANNEL</div><div class="col-span-5">TOPIC</div><div class="col-span-3">LINK</div>
+                    </div>
+                    <div class="space-y-4 text-sm max-h-96 overflow-auto pr-2">
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 17</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">Seattle small-business hiring by the numbers</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7483578796160393218" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 16</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">HR glossary for small-business owners</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7482840357454675968" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 14</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">The onboarding mistake that quietly costs you good hires</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/posts/trillyco-onboarding-hrcompliance-share-7482446624015708160-Ftcx/" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 8</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">One bad hire at a 10–15 attorney Seattle firm — case study</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/posts/trilly-co_one-bad-hire-at-a-10-15-attorney-seattle-activity-7480669320398729216-fbzj" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 6</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">HR systems & compliance thread (8 posts)</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7479943239089823747" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 1</div>
+                            <div class="col-span-2 text-blue-600">LinkedIn</div>
+                            <div class="col-span-5">Fractional HR explained for Seattle SMBs</div>
+                            <div class="col-span-3"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7478101072041930752" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 14</div>
+                            <div class="col-span-2 text-blue-600">Facebook</div>
+                            <div class="col-span-5">The onboarding mistake that quietly costs you good hires</div>
+                            <div class="col-span-3"><a href="https://www.facebook.com/share/p/199CqMx4pR/" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 3</div>
+                            <div class="col-span-2 text-blue-600">Facebook</div>
+                            <div class="col-span-5">HR for small business — compliance checklist</div>
+                            <div class="col-span-3"><a href="https://www.facebook.com/share/p/1D3JFRbeHp/" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 1</div>
+                            <div class="col-span-2 text-blue-600">X</div>
+                            <div class="col-span-5">Fractional HR vs in-house (single tweet)</div>
+                            <div class="col-span-3"><a href="https://x.com/Trilly_Co/status/2072338947699515791" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 3</div>
+                            <div class="col-span-2 text-blue-600">X</div>
+                            <div class="col-span-5">HR compliance single tweet</div>
+                            <div class="col-span-3"><a href="https://x.com/Trilly_Co/status/2074169610211827752" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 6</div>
+                            <div class="col-span-2 text-blue-600">X</div>
+                            <div class="col-span-5">HR compliance thread (8 tweets)</div>
+                            <div class="col-span-3"><a href="https://x.com/Trilly_Co/status/2076666670484013272" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jul 6</div>
+                            <div class="col-span-2 text-blue-600">X</div>
+                            <div class="col-span-5">HR compliance reply/quote</div>
+                            <div class="col-span-3"><a href="https://x.com/Trilly_Co/status/2076687888696197165" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                        <div class="grid grid-cols-12 items-center py-2 border-b border-zinc-100 text-xs">
+                            <div class="col-span-2 font-medium">Jun 29</div>
+                            <div class="col-span-2 text-blue-600">X</div>
+                            <div class="col-span-5">Trillium launch thread</div>
+                            <div class="col-span-3"><a href="https://x.com/Trilly_Co/status/2071662188901630276" target="_blank" class="text-blue-600 hover:underline">view →</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AEO LANDSCAPE + GAPS -->
+            <div class="col-span-12 lg:col-span-7">
+                <div class="bg-white rounded-3xl shadow-sm border border-zinc-100 p-8 card h-full">
+                    <div class="font-semibold mb-6">AEO Landscape — What Seattle SMB Owners Actually Ask</div>
+                    <div class="flex gap-4">
+                        <div class="flex-1">
+                            <div class="text-xs uppercase text-zinc-500 mb-3">Strong Coverage</div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start gap-2"><span class="text-emerald-500 mt-1">•</span> When should I hire an HR consultant?</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-500 mt-1">•</span> What does onboarding best practice look like?</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-500 mt-1">•</span> WA state compliance checklist 2026</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-500 mt-1">•</span> How much does fractional HR cost?</li>
+                            </ul>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-xs uppercase text-rose-500 mb-3">Major Gaps (High Intent)</div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start gap-2"><span class="text-rose-500 mt-1">•</span> Employee handbook template for small business (WA)</li>
+                                <li class="flex items-start gap-2"><span class="text-rose-500 mt-1">•</span> Performance management systems that actually work</li>
+                                <li class="flex items-start gap-2"><span class="text-rose-500 mt-1">•</span> How to reduce turnover in 5–25 person teams</li>
+                                <li class="flex items-start gap-2"><span class="text-rose-500 mt-1">•</span> Remote work policy template (post-2026 laws)</li>
+                                <li class="flex items-start gap-2"><span class="text-rose-500 mt-1">•</span> Workplace conflict resolution playbook</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECOMMENDED R12 -->
+            <div class="col-span-12 lg:col-span-5">
+                <div class="bg-gradient-to-br from-amber-50 to-white border border-amber-200 rounded-3xl p-8 card h-full">
+                    <div class="uppercase text-amber-600 text-xs font-semibold tracking-widest mb-2">RECOMMENDED NEXT</div>
+                    <div class="text-2xl heading-font font-semibold tracking-tight mb-6">R12 — Employee Handbook for Washington Small Businesses</div>
+                    <div class="text-zinc-600 mb-8">Highest-intent AEO query with zero dedicated coverage. Directly addresses Keenan's feedback: general pain points (not hyper-specific data). Would generate 15+ high-quality posts across all channels and directly supports sales of fractional HR retainers.</div>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-2xl p-5 border border-amber-100">
+                            <div class="font-medium text-sm mb-1">R12 Alternative 1</div>
+                            <div class="text-zinc-700">Performance Management & Retention Playbook for Growing Teams</div>
+                            <div class="text-xs text-emerald-600 mt-3">Aligns with "AI-powered talent partner" positioning</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-amber-100">
+                            <div class="font-medium text-sm mb-1">R12 Alternative 2</div>
+                            <div class="text-zinc-700">Fractional HR vs In-House vs Software — 2026 Buyer's Guide</div>
+                            <div class="text-xs text-emerald-600 mt-3">Direct sales support asset</div>
+                        </div>
+                    </div>
+                    <div class="mt-10 pt-6 border-t border-amber-200 text-xs text-amber-600">
+                        This dashboard was built to give Keenan clear options. The Sunday meeting is the perfect time to align on which gap to close first.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL CTA -->
+            <div class="col-span-12 bg-zinc-900 text-white rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between">
+                <div>
+                    <div class="text-amber-400 text-sm font-medium mb-2">NEXT STEP</div>
+                    <div class="text-2xl font-semibold">Review with Keenan on Sunday night</div>
+                    <div class="text-white/70 mt-2">Use this page as the briefing deck. We can turn the chosen R12 into a full resource page + 15-post cascade within 48 hours of greenlight.</div>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <a href="https://github.com/clawdbartell-wq/trillium-content-strategy-2026" target="_blank" class="inline-flex items-center gap-x-3 bg-white text-zinc-900 px-8 py-4 rounded-2xl font-semibold hover:bg-amber-200 transition-all active:scale-95">
+                        OPEN ON GITHUB
+                        <span class="text-xl">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-xs text-zinc-400 py-12 border-t">
+            Built by Clawd • Data from Trilly Co Content Calendar (sheet 1abzPmMV5RnbOzZnxo1GMXmZsABpWyO3Ffni9f0KTB10) + AEO research • 
+            <a href="https://github.com/clawdbartell-wq/trillium-content-strategy-2026" class="hover:text-zinc-600">github.com/clawdbartell-wq/trillium-content-strategy-2026</a>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('channelChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['LinkedIn', 'X (Twitter)', 'Instagram', 'Facebook', 'Email'],
+                datasets: [{
+                    label: 'Posts Published',
+                    data: [12, 6, 6, 5, 2],
+                    backgroundColor: ['#0a2540', '#e36b5c', '#d4af7b', '#64748b', '#334155'],
+                    borderRadius: 6,
+                    barThickness: 42,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { backgroundColor: '#0a2540', titleColor: '#fff', bodyColor: '#ddd', displayColors: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#f1f1f1' }, ticks: { color: '#666', font: { size: 13 } } },
+                    x: { grid: { color: '#f1f1f1' }, ticks: { color: '#666', font: { size: 13 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
